@@ -8,10 +8,14 @@ module.exports = (api, options, rootOptions) => {
   const extPkg = {
     scripts: {
       "build-watch": "vue-cli-service build-watch"
+    },
+    devDependencies: {
+      "copy-webpack-plugin": "^4.6.0"
     }
   };
   if (ext === "ts") {
     extPkg.devDependencies = {
+      ...extPkg.devDependencies,
       "@types/chrome": "^0.0.75"
     };
   }
