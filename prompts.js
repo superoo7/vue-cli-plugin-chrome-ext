@@ -1,23 +1,20 @@
-const { version, name, description } = require("./package.json");
-
-module.exports = [
-  {
+module.exports = [{
     name: "name",
     type: "input",
     message: "Name of the Chrome Extension?",
-    default: name || ""
+    default: "chrome-ext"
   },
   {
     name: "description",
     type: "input",
     message: "Description for the Chrome Extension?",
-    default: description || ""
+    default: "chrome extension"
   },
   {
     name: "version_no",
     type: "input",
     message: "Version for the Chrome Extension?",
-    default: version || "0.0.1"
+    default: "0.0.1"
   },
   {
     name: "script",

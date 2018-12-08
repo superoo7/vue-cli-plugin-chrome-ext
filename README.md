@@ -4,18 +4,17 @@
 
 Start a chrome extension project with Vue-CLI with ease!
 
-![chrome logo](./logo.png)
+![chrome logo](./logo.png =100x100)
 
 _Logo from FontAwesome_
 
 ## Installation
 
-This plugin is meant for using new project for chrome extensions.
+This plugin is meant for using new project for chrome extensions. Tested on default project of Vue, Vue with TypeScript
 
 ### For TypeScript
 
-- Create a new project with `vue create test-project`.
-- Install Typescript with `vue add typescript`.
+- Create a new project with `vue create test-project`, and select typescript without class-style component syntax
 - Then, add this plugin with `vue add chrome-ext`.
 - Clean up the repo by removing `src/main.ts`, `src/components`, `public/favicon.ico` and `public/index.html`
 
@@ -42,13 +41,13 @@ This plugin is meant for using new project for chrome extensions.
 
 ### High Priority
 
-- Clean up src and public file.
+- Add background script
+- Make options to generate certain files
 
 ### Medium Priority
 
 - Move over with this [template](https://github.com/posva/vue-plugin-template)
-- Add background
-- Make options to generate certain files
+- Clean up src and public file.
 
 ## Development
 
