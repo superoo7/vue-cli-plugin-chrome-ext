@@ -15,7 +15,7 @@ module.exports = [
     name: "version_no",
     type: "confirm",
     message: "Version for the Chrome Extension?",
-    default: process.env.CE_VERSION
+    default: process.env.CE_VERSION || "0.0.1"
   },
   {
     name: "popup",

@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-chrome-ext",
-  "version": "0.0.1-alpha-1",
+  "version": "0.0.1-alpha-2",
   "description": "generate chrome extension with vue.js",
   "main": "index.js",
   "scripts": {},
