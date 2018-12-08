@@ -15,7 +15,7 @@ module.exports = (api, options, rootOptions) => {
 
   api.onCreateComplete(() => {
     // add manifest.json to src file
-    const manifestPath = api.resolve(__dirname, "./public") + "/manifest.json";
+    const manifestPath = api.resolve("./public/manifest.json");
     generateManifest(options, manifestPath);
   });
 };
