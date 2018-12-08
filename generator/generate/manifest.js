@@ -11,9 +11,25 @@ const generateManifest = (options, manifestPath) => {
       default_popup: "popup.html"
     }
   };
-  fs.writeFileSync(manifestPath, JSON.stringify(manifestJson, null, 4), {
-    encoding: "utf-8"
-  });
+
+  // Production build of manifest.json
+  fs.writeFileSync(
+    `${manifestPath}/manifest.production.json`,
+    JSON.stringify(manifestJson, null, 4),
+    {
+      encoding: "utf-8"
+    }
+  );
+  // Development build of manifest.json
+  manifestJson["content_security_policy"] =
+    "script-src 'self' 'unsafe-eval'; object-src 'self'";
+  fs.writeFileSync(
+    `${manifestPath}/manifest.development.json`,
+    JSON.stringify(manifestJson, null, 4),
+    {
+      encoding: "utf-8"
+    }
+  );
 };
 
 module.exports = generateManifest;

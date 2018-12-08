@@ -1,2 +1,4 @@
 test-dir
+test-prod
 node_modules
+*.log

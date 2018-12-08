@@ -5,17 +5,21 @@ module.exports = (api, options, rootOptions) => {
 
   api.render(`./template-${ext}`);
 
+  const extPkg = {
+    scripts: {
+      "build-watch": "vue-cli-service build-watch"
+    }
+  };
   if (ext === "ts") {
-    api.extendPackage({
-      devDependencies: {
-        "@types/chrome": "^0.0.75"
-      }
-    });
+    extPkg.devDependencies = {
+      "@types/chrome": "^0.0.75"
+    };
   }
+  api.extendPackage(extPkg);
 
   api.onCreateComplete(() => {
     // add manifest.json to src file
-    const manifestPath = api.resolve("./public/manifest.json");
+    const manifestPath = api.resolve("./src");
     generateManifest(options, manifestPath);
   });
 };

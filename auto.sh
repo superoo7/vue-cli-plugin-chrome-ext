@@ -7,11 +7,14 @@ while getopts ":r" opt; do
     echo "resetting test-dir" &&
     [ -e test-dir ] && rm -rf test-dir &&
     vue create test-dir -d
+    vue add typescript
     ;;
  esac
 done
 
-[ ! -e test-dir ] && vue create test-dir -d
+[ ! -e test-dir ] && 
+vue create test-dir -d && 
+vue add typescript
 
 (
     cd test-dir && 
