@@ -1,4 +1,5 @@
 const generateManifest = require("./generate/manifest");
+const rimraf = require("rimraf");
 
 module.exports = (api, options, rootOptions) => {
   const ext = api.hasPlugin("typescript") ? "ts" : "js";
@@ -25,5 +26,27 @@ module.exports = (api, options, rootOptions) => {
     // add manifest.json to src file
     const manifestPath = api.resolve("./src");
     generateManifest(options, manifestPath);
+    // remove file
+    const scriptType = options.script;
+    const deleteFile =
+      scriptType === "js"
+        ? [
+            api.resolve("./src/assets/logo.png"),
+            api.resolve("./src/components"),
+            api.resolve("./src/App.vue"),
+            api.resolve("./src/main.js")
+          ]
+        : [
+            api.resolve("./src/assets/logo.png"),
+            api.resolve("./src/components"),
+            api.resolve("./src/App.vue"),
+            api.resolve("./src/main.ts")
+          ];
+
+    try {
+      deleteFile.forEach(filename => rimraf(filename));
+    } catch (err) {
+      console.log(`Unable to delete file`);
+    }
   });
 };

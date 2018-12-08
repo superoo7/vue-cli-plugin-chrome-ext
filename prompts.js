@@ -18,5 +18,12 @@ module.exports = [
     type: "input",
     message: "Version for the Chrome Extension?",
     default: version || "0.0.1"
+  },
+  {
+    name: "script",
+    type: "list",
+    message: "javascript or typescript?",
+    choices: ["js", "ts"],
+    default: "js"
   }
 ];

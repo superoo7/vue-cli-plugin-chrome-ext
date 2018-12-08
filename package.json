@@ -5,7 +5,9 @@
   "author": "superoo7 <jlwhoo7@gmail.com>",
   "scripts": {},
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "rimraf": "^2.6.2"
+  },
   "bugs": {
     "url": "https://github.com/superoo7/vue-cli-plugin-chrome-ext/issues"
   },
