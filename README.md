@@ -4,7 +4,7 @@
 
 Start a chrome extension project with Vue-CLI with ease!
 
-![chrome logo](./logo.png | width=48)
+<img src="./logo.png" height="24" width="48">
 
 _Logo from FontAwesome_
 
