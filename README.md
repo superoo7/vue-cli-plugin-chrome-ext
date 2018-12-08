@@ -73,6 +73,7 @@ Vue CLI prompt is based on [inquirer.js](https://github.com/SBoudrias/Inquirer.j
 ## Credit
 
 - https://github.com/zwenza/vue-cli-plugin-build-watch
+- https://github.com/RequireSun/vue-cli-plugin-chrome-extension
 
 ## License
 

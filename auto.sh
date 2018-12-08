@@ -7,18 +7,16 @@ while getopts ":r" opt; do
     echo "resetting test-dir" &&
     [ -e test-dir ] && rm -rf test-dir &&
     vue create test-dir -d
-    vue add typescript
     ;;
  esac
 done
 
 [ ! -e test-dir ] && 
-vue create test-dir -d && 
-vue add typescript
+vue create test-dir -d 
 
 (
     cd test-dir && 
     #  npm uninstall ../
     npm install --save-dev ../ &&
-    vue invoke vue-cli-plugin-chrome-ext --name "test 1" --description "test 2" --version_no "1.0.0" --popup "yes" --script "ts"
+    vue invoke vue-cli-plugin-chrome-ext --name "test 1" --description "test 2" --version_no "1.0.0" --popup "yes" --script "js"
 )

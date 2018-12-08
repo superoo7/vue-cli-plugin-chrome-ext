@@ -14,22 +14,20 @@ chromeName.forEach(name => {
   };
 });
 
-let plugins;
-if (process.env.NODE_ENV === "production") {
-  plugins = [
-    {
-      from: path.resolve("src/manifest.production.json"),
-      to: `${path.resolve("dist")}/manifest.json`
-    }
-  ];
-} else if (process.env.NODE_ENV === "development") {
-  plugins = [
-    {
-      from: path.resolve("src/manifest.development.json"),
-      to: `${path.resolve("dist")}/manifest.json`
-    }
-  ];
-}
+const plugins =
+  process.env.NODE_ENV === "production"
+    ? [
+        {
+          from: path.resolve("src/manifest.production.json"),
+          to: `${path.resolve("dist")}/manifest.json`
+        }
+      ]
+    : [
+        {
+          from: path.resolve("src/manifest.development.json"),
+          to: `${path.resolve("dist")}/manifest.json`
+        }
+      ];
 
 module.exports = {
   pages: pagesObj,
