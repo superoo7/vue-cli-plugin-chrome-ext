@@ -1,6 +1,5 @@
 const generateManifest = (options, manifestPath) => {
   const fs = require("fs");
-  const { respondToBoolean } = require("../../helper/functions.js");
   const { version_no: version, description, name, popup } = options;
   const manifestJson = {
     manifest_version: 2,
@@ -8,7 +7,7 @@ const generateManifest = (options, manifestPath) => {
     description,
     version
   };
-  if (respondToBoolean(popup)) {
+  if (popup) {
     manifestJson.browser_action = {
       default_popup: "popup.html"
     };
