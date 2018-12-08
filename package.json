@@ -1,13 +1,11 @@
 {
   "name": "vue-cli-plugin-chrome-ext",
-  "version": "0.0.5-alpha-2",
+  "version": "0.0.5",
   "description": "generate chrome extension with vue.js",
   "author": "superoo7 <jlwhoo7@gmail.com>",
   "scripts": {},
   "dependencies": {},
-  "devDependencies": {
-    "fs-extra": "^7.0.1"
-  },
+  "devDependencies": {},
   "bugs": {
     "url": "https://github.com/superoo7/vue-cli-plugin-chrome-ext/issues"
   },
