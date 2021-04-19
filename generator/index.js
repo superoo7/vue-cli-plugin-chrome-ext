@@ -1,11 +1,10 @@
 const generateManifest = require("./generate/manifest");
+const generateIndex = require("./generate/generateIndex")
 const path = require("path");
-
-module.exports = (api, options, rootOptions) => {
-  const ext = options.script;
-
+module.exports = (api, options, { vueVersion }) => {
+  const { script } = options;
   // create file
-  api.render(`./template-${ext}`);
+  api.render(`./template-${script}`);
 
   const extPkg = {
     scripts: {
@@ -15,7 +14,7 @@ module.exports = (api, options, rootOptions) => {
       "copy-webpack-plugin": "^4.6.0"
     }
   };
-  if (ext === "ts") {
+  if (script === "ts") {
     extPkg.devDependencies = {
       ...extPkg.devDependencies,
       "@types/chrome": "^0.0.75"
@@ -24,8 +23,10 @@ module.exports = (api, options, rootOptions) => {
   api.extendPackage(extPkg);
 
   api.onCreateComplete(() => {
-    // add manifest.json to src file
+    // add manifest.json and index.js or index.ts to folder
     const manifestPath = api.resolve("./src");
-    generateManifest(options, manifestPath);
+    generateIndex(api.resolve("./src/options"), vueVersion, script === "ts");
+    generateIndex(api.resolve("./src/popup"), vueVersion, script === "ts");
+    generateManifest(options, manifestPath, vueVersion);
   });
 };
