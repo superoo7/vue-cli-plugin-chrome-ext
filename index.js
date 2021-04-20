@@ -4,7 +4,7 @@ module.exports = (api, opts) => {
     webpackConfig.optimization.delete("splitChunks");
   });
 
-  api.configureWebpack(webpackConfig => {});
+  api.configureWebpack(webpackConfig => { });
 
   api.registerCommand("build-watch", (...args) => {
     api.configureWebpack(webpackConfig => {

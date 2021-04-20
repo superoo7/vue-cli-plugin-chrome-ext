@@ -22,5 +22,9 @@ module.exports = [{
   message: "javascript or typescript?",
   choices: ["js", "ts"],
   default: "js"
-}
-];
+}, {
+  name: "delete_file",
+  type: "confirm",
+  message: "delete Initial file? (src/main.js src/components public/index.html public/favicon)",
+  default: true
+}];

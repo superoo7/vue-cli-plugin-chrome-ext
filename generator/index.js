@@ -1,8 +1,11 @@
 const generateManifest = require("./generate/manifest");
 const generateIndex = require("./generate/generateIndex")
-const path = require("path");
+const deleteFile = require("./generate/deleteFile")
+// const path = require("path");
+
 module.exports = (api, options, { vueVersion }) => {
-  const { script } = options;
+  const { script, delete_file } = options;
+
   // create file
   api.render(`./template-${script}`);
 
@@ -14,7 +17,9 @@ module.exports = (api, options, { vueVersion }) => {
       "copy-webpack-plugin": "^4.6.0"
     }
   };
-  if (script === "ts") {
+  const isTypeScript = script === "ts"
+
+  if (isTypeScript) {
     extPkg.devDependencies = {
       ...extPkg.devDependencies,
       "@types/chrome": "^0.0.75"
@@ -25,8 +30,10 @@ module.exports = (api, options, { vueVersion }) => {
   api.onCreateComplete(() => {
     // add manifest.json and index.js or index.ts to folder
     const manifestPath = api.resolve("./src");
-    generateIndex(api.resolve("./src/options"), vueVersion, script === "ts");
-    generateIndex(api.resolve("./src/popup"), vueVersion, script === "ts");
+    generateIndex(api.resolve("./src/options"), vueVersion, isTypeScript);
+    generateIndex(api.resolve("./src/popup"), vueVersion, isTypeScript);
     generateManifest(options, manifestPath, vueVersion);
+    if (delete_file) deleteFile(api.resolve("./"), isTypeScript);
+
   });
 };
