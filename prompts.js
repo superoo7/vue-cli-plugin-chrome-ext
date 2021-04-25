@@ -15,16 +15,20 @@ module.exports = [{
   type: "input",
   message: "Version for the Chrome Extension?",
   default: "0.0.1"
-},
-{
-  name: "script",
-  type: "list",
-  message: "javascript or typescript?",
-  choices: ["js", "ts"],
-  default: "js"
 }, {
   name: "delete_file",
   type: "confirm",
   message: "delete Initial file? (src/main.js src/components public/index.html public/favicon)",
   default: true
+}, {
+  type: "checkbox",
+  message: "Please select the required components :",
+  name: "components",
+  choices: [
+    "background",
+    "popup",
+    "content",
+    "options"
+  ],
+  default: ['popup', 'content'],
 }];

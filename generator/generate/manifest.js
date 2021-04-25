@@ -1,16 +1,32 @@
 const generateManifest = (options, manifestPath) => {
   const fs = require("fs");
-  const { version_no: version, description, name } = options;
+  const { version_no: version, description, name, components } = options;
   const manifestJson = {
     manifest_version: 2,
     name,
     description,
     version,
-    options_page: "options.html",
-    browser_action: {
-      default_popup: "popup.html"
-    }
   };
+
+  if (components.includes('background')) {
+    manifestJson.background = {
+      "scripts": ["/js/background.js"],
+      "persistent": false
+    }
+  }
+  if (components.includes('popup')) {
+    manifestJson.browser_action = { default_popup: "popup.html" }
+  }
+  if (components.includes('content')) {
+    manifestJson.content_scripts = [{
+      "matches": ["<all_urls>"],
+      "js": ["/js/content.js"]
+    }]
+  }
+  if (components.includes('options')) {
+    manifestJson.options_page = "options.html"
+  }
+
 
   // Production build of manifest.json
   fs.writeFileSync(
