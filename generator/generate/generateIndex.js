@@ -1,31 +1,13 @@
-const generateIndexFile = (path, vueVersion, isTypeScript, componentsName) => {
+const generateIndexFile = (api, vueVersion, isTypeScript, componentsName) => {
     const fs = require("fs");
     const onlyScriptFile = ['background', 'content']
 
     if (!onlyScriptFile.includes(componentsName)) {
-        const vueIndex = vueVersion === "3" ?
-            `import { createApp } from "vue";
-    import App from "./App/App.vue";
-    
-    createApp(App).mount("#app");
-    ` :
-            `import Vue from "vue";
-    import AppComponent from "./App/App.vue";
-    Vue.component("app-component", AppComponent);
-    new Vue({
-    el: "#app",
-    render: createElement => {
-    return createElement(AppComponent);
-        }
-    });`
-        // generate index.js or index.ts
-        fs.writeFileSync(
-            `${path}/index.${!isTypeScript ? 'js' : 'ts'}`,
-            vueIndex,
-            {
-                encoding: "utf-8"
-            }
-        );
+        const renderPath = `./src/${componentsName}/index.${isTypeScript ? 'js' :'ts' }`;
+        const renderTemplate = `../vueIndex/vue${vueVersion}Index.js`;
+        api.render({
+            [renderPath]:renderTemplate
+        })
     } else {
         // just only script file and folder
         fs.mkdir(`src/${componentsName}`, (err) => {
