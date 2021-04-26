@@ -6,6 +6,8 @@
 
 使用 Vue-CLI 轻松建构 chrome 扩展插件
 
+支援 vue2 vue3 TypeScript 跟 JavaScript!
+
 <img src="./logo.png" height="48" width="48">
 
 _Logo from FontAwesome_

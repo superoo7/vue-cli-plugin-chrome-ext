@@ -6,6 +6,8 @@ English | [简体中文](./README-zh_CN.md) | [繁體中文](./README-zh_TW.md)
 
 Start a chrome extension project with Vue-CLI with ease!
 
+support vue2 vue3 TypeScript and JavaScript!
+
 <img src="./logo.png" height="48" width="48">
 
 _Logo from FontAwesome_
