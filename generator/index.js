@@ -10,7 +10,10 @@ module.exports = (api, options, { vueVersion }) => {
   const { delete_file, components } = options;
   // create file
   api.render(`./template`);
-
+  // dynamic grenrate comonents index file
+    components.forEach(e => {
+      generateIndex(api, vueVersion, isTypeScript, e);
+    });
   const extPkg = {
     scripts: {
       "build-watch": "vue-cli-service build-watch --mode development"
@@ -30,10 +33,7 @@ module.exports = (api, options, { vueVersion }) => {
   api.extendPackage(extPkg);
 
   api.onCreateComplete(() => {
-    // dynamic grenrate comonents index file
-    components.forEach(e => {
-      generateIndex(api.resolve(`./src/${e}`), vueVersion, isTypeScript, e);
-    });
+    
     // add manifest.json
     generateManifest(options, api.resolve("./src"));
     // add env file
