@@ -1,7 +1,5 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
-const packageJSON = require('./package.json')
-const hasTypeScript = packageJSON.devDependencies.typescript;
 
 // Generate pages object
 const pages = {};
@@ -10,7 +8,7 @@ const chromeName = process.env.VUE_APP_FILE.split(",");
 
 chromeName.forEach((name) => {
   pages[name] = {
-    entry: `src/${name}/index.${!hasTypeScript ? 'js' : 'ts'}`,
+    entry: `src/${name}/`,
     template: 'public/index.html',
     filename: `${name}.html`,
   }

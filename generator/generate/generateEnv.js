@@ -1,5 +1,4 @@
 const generateEnv = (path, componentsName) => {
-    console.log('componentsName: ', componentsName);
     let str = '';
     componentsName.forEach(value => {
         if (value === componentsName[componentsName.length - 1]) {

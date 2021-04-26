@@ -2,18 +2,19 @@ const generateManifest = require("./generate/manifest");
 const generateIndex = require("./generate/generateIndex")
 const deleteFile = require("./generate/deleteFile")
 const generateEnv = require("./generate/generateEnv")
-// const path = require("path");
 
 module.exports = (api, options, { vueVersion }) => {
   const utils = require('./utils')(api)
   const isTypeScript = utils.isTypeScriptProject();
   const { delete_file, components } = options;
-  // create file
-  api.render(`./template`);
-  // dynamic grenrate comonents index file
-    components.forEach(e => {
-      generateIndex(api, vueVersion, isTypeScript, e);
-    });
+  // // create file
+  api.render({
+    './vue.config.js': './template/vue.config.js'
+  });
+  // dynamic grenrate (popup background option content) index file
+  components.forEach(e => {
+    generateIndex(api, vueVersion, isTypeScript, e);
+  });
   const extPkg = {
     scripts: {
       "build-watch": "vue-cli-service build-watch --mode development"
@@ -24,7 +25,6 @@ module.exports = (api, options, { vueVersion }) => {
   };
 
   if (isTypeScript) {
-    api.render(`./shimsFile`); // add shims.ts
     extPkg.devDependencies = {
       ...extPkg.devDependencies,
       "@types/chrome": "^0.0.75"
@@ -33,7 +33,6 @@ module.exports = (api, options, { vueVersion }) => {
   api.extendPackage(extPkg);
 
   api.onCreateComplete(() => {
-    
     // add manifest.json
     generateManifest(options, api.resolve("./src"));
     // add env file

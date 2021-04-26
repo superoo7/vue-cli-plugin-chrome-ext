@@ -1,8 +1,8 @@
 const generateManifest = (options, manifestPath) => {
   const fs = require("fs");
-  const { version_no: version, description, name, components } = options;
+  const { version_no: version, manifest_version, description, name, components } = options;
   const manifestJson = {
-    manifest_version: 2,
+    manifest_version,
     name,
     description,
     version,

@@ -16,14 +16,22 @@ module.exports = [{
   message: "Version for the Chrome Extension?",
   default: "0.0.1"
 }, {
+  name: "manifest_version",
+  type: "list",
+  message: "manifest_version for the Chrome Extension?",
+  choices: [
+    2, 3
+  ],
+  default: [3]
+}, {
   name: "delete_file",
   type: "confirm",
   message: "delete Initial file? (src/main.js src/components public/index.html public/favicon)",
   default: true
 }, {
-  type: "checkbox",
-  message: "Please select the required components :",
   name: "components",
+  message: "Please select the required components :",
+  type: "checkbox",
   choices: [
     "background",
     "popup",
